@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="psicotecnico_view_search" model="ir.ui.view">
+ <field name="name">Library Book Search</field>
+ <field name="model">tms.psicotecnico</field>
+ <field name="arch" type="xml">
+  <search>
+   <field name="name"/>
+   <field name="date_release"/>
+    </search>
+ </field>
+</record>
+
+<record id="psicotecnico_view_tree" model="ir.ui.view">
+  <field name="name">Library Book List</field>
+  <field name="model">tms.psicotecnico</field>
+  <field name="arch" type="xml">
+   <tree>
+    <field name="name"/>
+    <field name="date_release"/>
+   </tree>
+    </field>
+</record>
+
+<record id="psicotecnico_view_form" model="ir.ui.view">
+  <field name="name">Library Book Form</field>
+  <field name="model">tms.psicotecnico</field>
+  <field name="arch" type="xml">
+    <form>
+	<h1>Hola Mundo</h1>
+      <group>
+	<field name="name"/>
+	<field name="date_release" />
+	<field name="chofer" />
+
+      </group>
+   </form>
+  </field>
+</record>
+
+<!-- Data records go here -->
+<!-- ITEMS A MODIFICAR -->
+<record id="viajes_view_search" model="ir.ui.view">
+ <field name="name">Viajes Search</field>
+ <field name="model">tms.viajes</field>
+ <field name="arch" type="xml">
+  <search>
+   <field name="name"/>
+   <field name="date_release"/>
+   <field name="chofer"/>
+   <field name="vehiculo"/>
+   <field name="estado"/>
+
+    </search>
+ </field>
+</record>
+
+<record id="viajes_view_tree" model="ir.ui.view">
+  <field name="name">Viajes List</field>
+  <field name="model">tms.viajes</field>
+  <field name="arch" type="xml">
+   <tree>
+    <field name="name"/>
+    <field name="date_release"/>
+    <field name="chofer"/>
+    <field name="vehiculo"/>
+    <field name="estado"/>
+   </tree>
+    </field>
+</record>
+
+<record id="viajes_view_form" model="ir.ui.view">
+  <field name="name">Viajes Form</field>
+  <field name="model">tms.viajes</field>
+  <field name="arch" type="xml">
+    <form>
+	<header>
+		<button name="to_progress" type="object" string="Comenzar Viaje" />
+		<field name="estado" widget="statusbar" />
+	</header>
+        <group>
+		<field name="name"/>
+		<field name="date_release" />
+		<notebook>
+			<page string="Chofer">
+				<group>
+					<field name="chofer" />
+				</group>
+			</page>
+			<page string="Vehiculo">
+				<group>
+					<field name="vehiculo" />
+				</group>
+			</page>
+		</notebook>
+        </group>
+   </form>
+  </field>
+</record>
+
+<!-- FIN ITEMS A MODIFICAR -->
+
+<!--RUTA -->
+<record id="ruta_view_search" model="ir.ui.view">
+ <field name="name">ruta Search</field>
+ <field name="model">tms.ruta</field>
+ <field name="arch" type="xml">
+  <search>
+   <field name="dominio"/>
+   <field name="date_release"/>
+   <field name="chofer"/>
+   <!-- field name="vehiculo"/ -->
+   <field name="name"/>
+    </search>
+ </field>
+</record>
+<record id="ruta_view_tree" model="ir.ui.view">
+  <field name="name">Ruta List</field>
+  <field name="model">tms.ruta</field>
+  <field name="arch" type="xml">
+   <tree>
+    <field name="name"/>
+    <field name="date_release"/>
+    <field name="chofer"/>
+    <field name="dominio"/>
+    <!-- field name="estado"/ -->
+   </tree>    </field>
+</record>
+<!-- record id="viajes_view_form" model="ir.ui.view">
+  <field name="name">Viajes Form</field>
+  <field name="model">tms.viajes</field>
+  <field name="arch" type="xml">
+    <form>
+	
+   </form>
+  </field>
+</record -->
+
+<!-- FIN RUTA A MODIFICAR -->
+
+<menuitem
+	id="tms_menu_20"
+	name="TMS 2.0"
+	parent=""
+	sequence="5" />
+
+<menuitem
+	id="tms_master_data"
+	name="Master Data"
+	parent="tms_menu_20"
+	sequence="5" />
+
+
+<act_window
+	id="TMS_Psicotecnico_action"
+	name="TMS"
+	view_mode="tree,form"
+	res_model="tms.psicotecnico" />
+<menuitem
+	id="tms_menu"
+	name="TMS"
+	parent=""
+	action="TMS_Psicotecnico_action"
+	sequence="5" />
+<act_window
+	id="TMS_Viajes_action"
+	name="Viajes"
+	view_mode="tree,form"
+	res_model="tms.viajes" />
+<menuitem
+	id="tms_menu_Viajes"
+	name="Viajes"
+	parent="tms_master_data" 
+	action="TMS_Viajes_action"
+	sequence="10" />
+<!-- act_window
+	id="TMS_Rutas_action"
+	name="Rutas"
+	view_mode="tree,form"
+	res_model="tms.ruta" / -->
+
+        <record id="TMS_Rutas_action" model="ir.actions.act_window">
+            <field name="name">Rutas</field>
+            <field name="res_model">tms.ruta</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<menuitem
+	id="tms_Rutas_action"
+	name="Rutas"
+	parent="tms_master_data"
+	action="TMS_Rutas_action"
+	sequence="10" />
+
+
+</data>
+</openerp>
+
